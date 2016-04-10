@@ -6,6 +6,7 @@
   "hubot-google-translate",
   "hubot-pugme",
   "hubot-maps",
+  "hubot-motivate",
   "hubot-redis-brain",
   "hubot-rules",
   "hubot-shipit"
