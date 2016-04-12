@@ -24,6 +24,6 @@ plugin = (robot) ->
 
   robot.enter (msg) ->
     if msg.message.room == "general"
-      msg.send "Welcome, @#{msg.message.user.name}! What brings you to MetaKgp?"
+      msg.send "Welcome, @#{msg.message.user.name}! Why don't you introduce yourself?"
 
 module.exports = plugin
