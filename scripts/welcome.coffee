@@ -14,16 +14,38 @@
 #
 # Author:
 #  nevinvalsaraj
+welcome_message_1 = [
+  "Hi ",
+  "Hola ",
+  "Hey ",
+  "Hey there, "
+]
+
+welcome_message_2 = [
+  "! Looks like you're new here.",
+  "! Looks like this is your first time here.",
+  "! Welcome to MetaKgp!",
+]
+
+welcome_message_3 = [
+  " Why don't you introduce yourself?",
+  " Why don't you tell us a bit about you?"
+]
+
 
 plugin = (robot) ->
   robot.respond /(hello|hi)/i, (msg) ->
-      msg.send "Hi #{msg.message.user.name}!"
+      msg.send "Hi @#{msg.message.user.name}!"
 
   robot.respond /how are you/i, (msg) ->
-    msg.send "Things are good, #{msg.message.user.name}! What about you?"
+    msg.send "Things are good, @#{msg.message.user.name}! What about you?"
 
   robot.enter (msg) ->
     if msg.message.room == "general"
-      msg.send "Welcome, @#{msg.message.user.name}! Why don't you introduce yourself?"
+      randNum = Math.floor(Math.random() * 10)
+      msg.send welcome_message_1[randNum % (welcome_message_1.length-1)] + \
+        '@' + msg.message.user.name + welcome_message_2[randNum % \
+          (welcome_message_2.length-1)] + welcome_message_3[randNum % \
+            (welcome_message_3.length-1)]
 
 module.exports = plugin
