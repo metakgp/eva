@@ -12,6 +12,11 @@ has, etc!
 [hubot]: http://hubot.github.com
 [generator-hubot]: https://github.com/github/generator-hubot
 
+### Present Setup
+
+This is deployed on Heroku. The name of the app is `metakgp-eva`. Contact @amrav
+on the Metakgp Slack, if you want to push changes to this bot.
+
 ### Running Eva Locally
 
 You can test your hubot by running the following, however some plugins will not
