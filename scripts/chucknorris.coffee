@@ -15,5 +15,5 @@ module.exports = (robot) ->
       .get() (err, res, body) ->
         data = JSON.parse body
         joke = data.value.joke
-        msg.reply joke
+        msg.send joke
 
