@@ -32,6 +32,11 @@ welcome_message_3 = [
   " Why don't you tell us a bit about you?"
 ]
 
+channel_info = "Hey there, welcome to Metakgp's Slack!\n
+The following is a list of channels and the type of discussions
+ that each channel is designed to contain:\n
+- #general ->"
+
 
 plugin = (robot) ->
   robot.respond /(hello|hi)/i, (msg) ->
@@ -40,13 +45,12 @@ plugin = (robot) ->
   robot.respond /how are you/i, (msg) ->
     msg.send "Things are good, @#{msg.message.user.name}! What about you?"
 
-  robot.hear /test me/i, (msg) ->
+  robot.hear /send joining message to me/i, (msg) ->
     if msg.message.room == "random"
-      robot.send {room: msg.message.user.name}, "Hey, reached out to me?"
+      robot.send {room: msg.message.user.name}, channel_info
 
   robot.enter (msg) ->
     if msg.message.room == "general"
-      robot.send {room: msg.message.user.name}, "Hey, you can talk to me in case you want to know more!"
       randNum = Math.floor(Math.random() * 10)
       msg.send welcome_message_1[randNum % (welcome_message_1.length-1)] + \
         '@' + msg.message.user.name + welcome_message_2[randNum % \
