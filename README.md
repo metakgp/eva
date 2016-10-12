@@ -14,8 +14,8 @@ has, etc!
 
 ### Present Setup
 
-This is deployed on Heroku. The name of the app is `metakgp-eva`. Contact @amrav
-on the Metakgp Slack, if you want to push changes to this bot.
+This is deployed on Heroku. The name of the app is `metakgp-eva`. If you want to
+push changes to eva, open a PR on this repository.
 
 ### Running Eva Locally
 
