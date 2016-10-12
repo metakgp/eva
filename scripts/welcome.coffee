@@ -40,8 +40,13 @@ plugin = (robot) ->
   robot.respond /how are you/i, (msg) ->
     msg.send "Things are good, @#{msg.message.user.name}! What about you?"
 
+  robot.hear /test me/i, (msg) ->
+    if msg.message.room == "random"
+      robot.send {room: msg.message.user.name}, "Hey, reached out to me?"
+
   robot.enter (msg) ->
     if msg.message.room == "general"
+      robot.send {room: msg.message.user.name}, "Hey, you can talk to me in case you want to know more!"
       randNum = Math.floor(Math.random() * 10)
       msg.send welcome_message_1[randNum % (welcome_message_1.length-1)] + \
         '@' + msg.message.user.name + welcome_message_2[randNum % \
