@@ -35,7 +35,14 @@ welcome_message_3 = [
 channel_info = "Hey there, welcome to Metakgp's Slack!\n
 The following is a list of channels and the type of discussions
  that each channel is designed to contain:\n
-- #general ->"
+- #mfqp-source -> Discussions about the mfqp-source project (Checkout https://github.com/metakgp/mfqp-source\n
+- #meta-x -> Disussions related to ongoing meta-x projects (naarad, mfqp, mftp, mcmp) and future moonshots\n
+- #book-club -> Read a book that you want to talk about? Want to read a book that someone else talked about? Go here!\n
+- #server -> Server related discussion. We run a Digital Ocean droplet\n
+- #general -> General discussions that don't fit anywhere else
+- #cute-animal-pics -> `@eva cat bomb 4` or `@eva pug bomb 4` in this channel should tell you more!\n
+- #random -> Unrelated rants and discussions, anything really
+"
 
 
 plugin = (robot) ->
