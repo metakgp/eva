@@ -33,7 +33,7 @@ welcome_message_3 = [
 ]
 
 channels_info = [
-  "Hey there, welcome to Metakgp's Slack!",
+  "Hello, welcome to Metakgp's Slack!",
   "The following is a list of channels and the type of discussions  that each channel is designed to contain:",
   "- #mfqp-source -> Discussions about the mfqp-source project",
   "- #meta-x -> Disussions related to ongoing meta-x projects (naarad, mfqp, mftp, mcmp) and future moonshots",
@@ -55,8 +55,7 @@ plugin = (robot) ->
     msg.send "Things are good, @#{msg.message.user.name}! What about you?"
 
   robot.respond /send the joining message to me/i, (msg) ->
-    if msg.message.room == "random"
-      robot.send {room: msg.message.user.name}, channels_info
+    robot.send {room: msg.message.user.name}, channels_info
 
   robot.enter (msg) ->
     if msg.message.room == "general"
