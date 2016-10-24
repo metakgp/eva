@@ -9,8 +9,13 @@
 #
 # Commands:
 #  hello - Responds with a cheery message
-#  hi
-#  how are you
+#  hi - Same as hello
+#  how are you - Responds with a polite greeting
+#  send the joining message to me - Responds with the joining message that is
+#  sent to users when they first join this slack
+#  help channel-name - Send long description containing information about the
+#  channel
+#
 #
 # Author:
 #  nevinvalsaraj
@@ -46,6 +51,7 @@ channels_info = [
   "Wiki: https://wiki.metakgp.org"
 ].join('\n')
 
+channel_descriptions = JSON.parse fs.readFileSync("../channel_long_descriptions.json")
 
 plugin = (robot) ->
   robot.respond /(hello|hi)/i, (msg) ->
@@ -57,6 +63,11 @@ plugin = (robot) ->
   robot.respond /send the joining message to me/i, (msg) ->
     robot.send {room: msg.message.user.name}, channels_info
 
+  robot.respond /help ([a-z-]+)/, (msg) ->
+    channel_name = msg.match[1]
+    if channel_descriptions[channel_name]
+      robot.send {room: msg.message.user.name}, channel_descriptions[channel_name]
+
   robot.enter (msg) ->
     if msg.message.room == "general"
       robot.send {room: msg.message.user.name}, channels_info
@@ -65,5 +76,8 @@ plugin = (robot) ->
         '@' + msg.message.user.name + welcome_message_2[randNum % \
           (welcome_message_2.length-1)] + welcome_message_3[randNum % \
             (welcome_message_3.length-1)]
+    else
+      if msg.message.room != "random" && channel_descriptions[msg.message.room]
+        robot.send {room: msg.message.user.name}, channel_descriptions[msg.message.room]
 
 module.exports = plugin
