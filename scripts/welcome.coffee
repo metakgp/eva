@@ -78,11 +78,10 @@ plugin = (robot) ->
           (welcome_message_2.length-1)] + welcome_message_3[randNum % \
             (welcome_message_3.length-1)]
     else
-      if msg.message.room != "random"
-        robot.send {room: msg.message.user.name}, "Hey #{msg.message.user.name}, You just joined ##{msg.message.room}, here's some information about this channel!"
-        more_about_the_channel = sorry_no_information
-        if channel_descriptions[msg.message.room]
-          more_about_the_channel = channel_descriptions[msg.message.room]
-        robot.send {room: msg.message.user.name}, more_about_the_channel
+      robot.send {room: msg.message.user.name}, "Hey #{msg.message.user.name}, You just joined ##{msg.message.room}, here's some information about this channel!"
+      more_about_the_channel = sorry_no_information
+      if channel_descriptions[msg.message.room]
+        more_about_the_channel = channel_descriptions[msg.message.room]
+      robot.send {room: msg.message.user.name}, more_about_the_channel
 
 module.exports = plugin
