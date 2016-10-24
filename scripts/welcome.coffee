@@ -17,6 +17,7 @@
 #
 # Author:
 #  nevinvalsaraj
+#  icyflame
 welcome_message_1 = [
   "Hi ",
   "Hola ",
@@ -59,7 +60,7 @@ plugin = (robot) ->
   robot.respond /how are you/i, (msg) ->
     msg.send "Things are good, @#{msg.message.user.name}! What about you?"
 
-  robot.respond /send the joining message to me/i, (msg) ->
+  robot.respond /(send the )?joining message( to me)?/i, (msg) ->
     robot.send {room: msg.message.user.name}, channels_info
 
   robot.respond /(tell me )?more about \#?([a-z-]+)/, (msg) ->
