@@ -11,10 +11,8 @@
 #  hello - Responds with a cheery message
 #  hi - Same as hello
 #  how are you - Responds with a polite greeting
-#  send the joining message to me - Responds with the joining message that is
-#  sent to users when they first join this slack
-#  help channel-name - Send long description containing information about the
-#  channel
+#  send the joining message to me - Responds with the joining message that is sent to users when they first join this slack
+#  tell me more about <channel-name> - Send long description containing information about the channel
 #
 #
 # Author:
@@ -52,7 +50,7 @@ channels_info = [
 ].join('\n')
 
 channel_descriptions = JSON.parse require("fs").readFileSync("channel_long_descriptions.json")
-sorry_no_information = "Ooops! It seems we don't know anything more about this channel! Sorry, it is for you to explore!"
+sorry_no_information = "Ooops! It seems we don't know anything more about this channel! Sorry, you are a pioneer!"
 
 plugin = (robot) ->
   robot.respond /(hello|hi)/i, (msg) ->
@@ -64,10 +62,12 @@ plugin = (robot) ->
   robot.respond /send the joining message to me/i, (msg) ->
     robot.send {room: msg.message.user.name}, channels_info
 
-  robot.respond /help ([a-z-]+)/, (msg) ->
-    channel_name = msg.match[1]
+  robot.respond /(tell me )?more about \#?([a-z-]+)/, (msg) ->
+    channel_name = msg.match[2]
+    channel_more_info = sorry_no_information
     if channel_descriptions[channel_name]
-      robot.send {room: msg.message.user.name}, channel_descriptions[channel_name]
+      channel_more_info = channel_descriptions[channel_name]
+    robot.send {room: msg.message.user.name}, channel_more_info
 
   robot.enter (msg) ->
     if msg.message.room == "general"
