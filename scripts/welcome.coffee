@@ -51,7 +51,7 @@ channels_info = [
   "Wiki: https://wiki.metakgp.org"
 ].join('\n')
 
-channel_descriptions = JSON.parse fs.readFileSync("../channel_long_descriptions.json")
+channel_descriptions = JSON.parse require("fs").readFileSync("channel_long_descriptions.json")
 
 plugin = (robot) ->
   robot.respond /(hello|hi)/i, (msg) ->
