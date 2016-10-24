@@ -52,6 +52,7 @@ channels_info = [
 ].join('\n')
 
 channel_descriptions = JSON.parse require("fs").readFileSync("channel_long_descriptions.json")
+sorry_no_information = "Ooops! It seems we don't know anything more about this channel! Sorry, it is for you to explore!"
 
 plugin = (robot) ->
   robot.respond /(hello|hi)/i, (msg) ->
@@ -77,7 +78,11 @@ plugin = (robot) ->
           (welcome_message_2.length-1)] + welcome_message_3[randNum % \
             (welcome_message_3.length-1)]
     else
-      if msg.message.room != "random" && channel_descriptions[msg.message.room]
-        robot.send {room: msg.message.user.name}, channel_descriptions[msg.message.room]
+      if msg.message.room != "random"
+        robot.send {room: msg.message.user.name}, "Hey #{msg.message.user.name}, You just joined ##{msg.message.room}, here's some information about this channel!"
+        more_about_the_channel = sorry_no_information
+        if channel_descriptions[msg.message.room]
+          more_about_the_channel = channel_descriptions[msg.message.room]
+        robot.send {room: msg.message.user.name}, more_about_the_channel
 
 module.exports = plugin
