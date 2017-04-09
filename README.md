@@ -15,7 +15,8 @@ has, etc!
 ### Present Setup
 
 This is deployed on Heroku. The name of the app is `metakgp-eva`. If you want to
-push changes to eva, open a PR on this repository.
+push changes to eva, open a PR on this repository. The heroku application is owned
+by [Vikrant Varma](https://github.com/amrav).
 
 ### Running Eva Locally
 
