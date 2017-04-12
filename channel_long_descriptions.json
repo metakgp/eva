@@ -1,6 +1,9 @@
 {
 
-  "general": "This is the channel for all general discussion. This could be related to any topic of your choice, a concern or otherwise. Feel free to tag any single person or a group of people to start a discussion. Remember that mentioning the whole channel using is strictly prohibited",
+  "book-club": "The place where bibliophiles and MetaKGPians meet to discuss (spoilers!)",
   "flashpoint": "An alternate timeline for Facebook posts",
-  "random": "The channel for everything that doesn't fit anywhere above!"
+  "general": "This is the channel for all general discussion. This could be related to any topic of your choice, a concern or otherwise. Feel free to tag any single person or a group of people to start a discussion. Remember that mentioning the whole channel using is strictly prohibited",
+  "meta-x": "A channel for discussing quirky projects, useful hacks and a lot more that pushes the boundaries of how we live and interact in KGP",
+  "random": "The channel for everything that doesn't fit anywhere above!",
+  "tech-help": "All queries to Linux,Ubuntu and Meta-projects are discussed here. Please research well,before asking your questions"
 }
