@@ -36,7 +36,7 @@ welcome_message_3 = [
   " Why don't you tell us a bit about you?"
 ]
 
-welcome_message_4 = " Also it will be better if you update your slack profile with your real name,contact number etc. "
+welcome_message_4 = " Also, it will be very helpful if you would update your Slack profile with your real name and contact number."
 channels_info = [
   "Hello, welcome to Metakgp's Slack!",
   "The following is a list of channels and the type of discussions  that each channel is designed to contain:",
@@ -78,7 +78,7 @@ plugin = (robot) ->
       msg.send welcome_message_1[randNum % (welcome_message_1.length-1)] + \
         '@' + msg.message.user.name + welcome_message_2[randNum % \
           (welcome_message_2.length-1)] + welcome_message_3[randNum % \
-            (welcome_message_3.length-1)] + welcome_message_4 
+            (welcome_message_3.length-1)] + welcome_message_4
     else
       robot.send {room: msg.message.user.name}, "Hey #{msg.message.user.name}, You just joined ##{msg.message.room}, here's some information about this channel!"
       more_about_the_channel = sorry_no_information
