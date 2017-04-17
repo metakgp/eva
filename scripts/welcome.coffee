@@ -50,7 +50,7 @@ channels_info = [
   "GitHub: https://github.com/metakgp",
   "Wiki: https://wiki.metakgp.org"
 ].join('\n')
-
+googleGroupInvite = "We also have a google group where we post all the latest announcements. You can join it by going to https://goo.gl/Uk4Lfl ."
 channel_descriptions = JSON.parse require("fs").readFileSync("channel_long_descriptions.json")
 sorry_no_information = "Ooops! It seems we don't know anything more about this channel! Sorry, you are a pioneer!"
 
@@ -73,6 +73,7 @@ plugin = (robot) ->
 
   robot.enter (msg) ->
     if msg.message.room == "general"
+      robot.send {room: msg.message.user.name}, googleGroupInvite
       robot.send {room: msg.message.user.name}, channels_info
       randNum = Math.floor(Math.random() * 10)
       msg.send welcome_message_1[randNum % (welcome_message_1.length-1)] + \
