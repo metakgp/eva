@@ -12,5 +12,8 @@
   "music": "A channel where you can share your musical tastes and the latest videos of your favourite singers!",
   "random": "The channel for everything that doesn't fit anywhere above!",
   "recent-changes": "Changes related to KGP brought to you by our very own Batman!",
-  "tech-help": "All queries to Linux,Ubuntu and Meta-projects are discussed here. Please search well, before asking your questions.(Search here means to look out on Google or StackOverFlow)"
+  "tech-help": "All queries to Linux,Ubuntu and Meta-projects are discussed here. Please search well, before asking your questions.(Search here means to look out on Google or StackOverFlow)",
+  "server": "All MetaKGP server realted queries go here. To begin with, we run a Digital Ocean droplet.",
+  "governance": "The channel where discussions related to the functioning, improvements and maintenances of MetaKGP happen.",
+  "demo-day": "The discussions related to demo-day goes here. It is an initiative of MetaKGP to promote development of personal projects in IIT KGP. Anyone can register, give project demo and stand a chance to win cash prize."
 }

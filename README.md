@@ -24,7 +24,16 @@ You can test your hubot by running the following, however some plugins will not
 behave as expected unless the [environment variables](#configuration) they rely
 upon have been set.
 
-You can start Eva locally by running:
+Install npm package:
+
+    apt-get install npm
+
+NOTE: If you are behind a proxy, please run the following commands to set proxy for npm:<br/>
+
+    npm config set proxy http://<username>:<password>@<proxy-server-url>:<port>
+    npm config set https-proxy http://<username>:<password>@<proxy-server-url>:<port>
+
+Now you can start Eva locally by running:
 
     % bin/hubot
 
