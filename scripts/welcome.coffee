@@ -18,6 +18,11 @@
 # Author:
 #  nevinvalsaraj
 #  icyflame
+
+
+randNum = (up_lim) ->
+  return (Math.floor(Math.random() * (2 * up_lim)) % up_lim)
+
 welcome_message_1 = [
   "Hi ",
   "Hola ",
@@ -27,19 +32,19 @@ welcome_message_1 = [
 ]
 
 welcome_message_2 = [
-  "! Looks like you're new to MetaKGP slack, welcome.\n",
-  "! Looks like this is your first time at MetaKGP slack, welcome.\n",
-  "! Welcome to MetaKgp!\n",
-]
+  "! Looks like you're new to MetaKGP slack, welcome.",
+  "! Looks like this is your first time at MetaKGP slack, welcome.",
+  "! Welcome to MetaKgp!",
+].join('\n')
 
 welcome_message_3 = [
-  "\nForgot to mention, everyone is waiting for you to say 'hi' in #general",
-  "\nBy the way, why don't you tell everyone a bit about yourself in #general?"
+  "Forgot to mention, everyone is waiting for you to say 'hi' in #general",
+  "By the way, why don't you tell everyone a bit about yourself in #general?"
 ]
 
-welcome_message_4 = " Also, it will be really helpful if you update your Slack profile with real name and contact number.\nEnjoy the stay :)"
+welcome_message_4 = " Also, it will be really helpful if you update your Slack profile with real name and contact number."
 channels_info = [
-  "\n\nThe following is a list of channels and the type of discussions that each channel is designed to contain:",
+  "The following is a list of channels and the type of discussions that each channel is designed to contain:",
   "- #mfqp-source -> Discussions about the mfqp-source project",
   "- #meta-x -> Disussions related to ongoing meta-x projects (naarad, mfqp, mftp, mcmp) and future moonshots",
   "- #book-club -> Read a book that you want to talk about? Want to read a book that someone else talked about? Go here!",
@@ -50,7 +55,7 @@ channels_info = [
   "GitHub: https://github.com/metakgp",
   "Wiki: https://wiki.metakgp.org"
 ].join('\n')
-googleGroupInvite = "\nWe also have a google group where we post all the latest announcements. You can join it by going to https://goo.gl/Uk4Lfl."
+googleGroupInvite = "We also have a google group where we post all the latest announcements. You can join it by going to https://goo.gl/Uk4Lfl."
 channel_descriptions = JSON.parse require("fs").readFileSync("channel_long_descriptions.json")
 sorry_no_information = "Ooops! It seems we don't know anything more about this channel! Sorry, you are a pioneer!"
 
@@ -74,14 +79,14 @@ plugin = (robot) ->
   robot.enter (msg) ->
     if msg.message.room == "general"
 
-      randNum = Math.floor(Math.random() * 10)
-      robot.send {room: msg.message.user.name}, welcome_message_1[randNum % (welcome_message_1.length-1)] + \
-        '@' + msg.message.user.name + welcome_message_2[randNum % \
-          (welcome_message_2.length-1)]
-      robot.send {room: msg.message.user.name}, googleGroupInvite
-      robot.send {room: msg.message.user.name}, channels_info
-      robot.send {room: msg.message.user.name}, welcome_message_3[randNum % \
-            (welcome_message_3.length-1)] + welcome_message_4
+      complete_msg = [
+        welcome_message_1[randNum(welcome_message_1.length-1)] + '@' + msg.message.user.name + welcome_message_2[randNum(welcome_message_2.length-1)],
+        googleGroupInvite,
+        channels_info,
+        welcome_message_3[randNum(welcome_message_3.length-1)] + welcome_message_4
+      ].join('\n')
+      robot.send {room: msg.message.user.name}, complete_msg
+
     else
       robot.send {room: msg.message.user.name}, "Hey #{msg.message.user.name}, You just joined ##{msg.message.room}, here's some information about this channel!"
       more_about_the_channel = sorry_no_information

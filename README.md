@@ -24,11 +24,34 @@ You can test your hubot by running the following, however some plugins will not
 behave as expected unless the [environment variables](#configuration) they rely
 upon have been set.
 
-Install npm package:
+#### Pre-requisites
 
-    apt-get install npm
+We require Node.js and npm to be installed in order to run eva locally.<br/>
 
-NOTE: If you are behind institute proxy, please follow commands listed [here](https://wiki.metakgp.org/w/Institute_proxies#npm).
+nvm (node version manager) is needed for the installation of Node.js and npm. To [install](https://github.com/creationix/nvm/blob/master/README.md#install-script) nvm use curl<br/>
+
+ `curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash`<br/>
+ 
+ or use wget<br/>
+ 
+ `wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash`<br/>
+ 
+The below script clones the nvm repository to `~/.nvm` and adds the source line to your profile (`~/.bash_profile`, `~/.zshrc`, `~/.profile`, or `~/.bashrc`).
+
+`export NVM_DIR="$HOME/.nvm"`<br/>
+`[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm`<br/>
+
+NOTE: If you are behind institute proxy, please set proxy for [nvm](https://wiki.metakgp.org/w/Institute_proxies#nvm).
+
+Now install Node.js LTS (long term support) version (this will also install npm LTS) using<br/>
+
+`nvm install --lts`<br/>
+
+
+
+NOTE: If you are behind institute proxy, please set proxy for [npm](https://wiki.metakgp.org/w/Institute_proxies#npm).
+
+#### Running Eva
 
 Now you can start Eva locally by running:
 
