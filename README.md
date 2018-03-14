@@ -24,7 +24,17 @@ You can test your hubot by running the following, however some plugins will not
 behave as expected unless the [environment variables](#configuration) they rely
 upon have been set.
 
-You can start Eva locally by running:
+#### Pre-requisites
+
+- Node.js
+- NPM
+
+You can use a package manager like [nvm](https://github.com/creationix/nvm) to
+get the latest version of node for your operating system.
+
+#### Running Eva
+
+Now you can start Eva locally by running:
 
     % bin/hubot
 

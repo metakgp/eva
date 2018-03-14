@@ -9,8 +9,11 @@
   "gsoc": "A channel for discussing recent updates or any other stuff related to the prestigious Google Summer of Code",
   "meetup": "A channel for discussing upcoming MetaKGP meet-ups",
   "meta-x": "A channel for discussing quirky projects, useful hacks and a lot more that pushes the boundaries of how we live and interact in KGP",
-  "music": "A channel where you can share your musical tastes and the latest videos of your favourite singers!",
+  "music": "A channel where you can share the music you love and find music that you have never encountered before!",
   "random": "The channel for everything that doesn't fit anywhere above!",
-  "recent-changes": "Changes related to KGP brought to you by our very own Batman!",
-  "tech-help": "All queries to Linux,Ubuntu and Meta-projects are discussed here. Please search well, before asking your questions.(Search here means to look out on Google or StackOverFlow)"
+  "recent-changes": "Changes made on the wiki brought to you by our very own Batman!",
+  "tech-help": "All queries regarding Linux, Ubuntu and Meta-projects are discussed here. STFW, RTFM and then ask smart questions (http://www.catb.org/esr/faqs/smart-questions.html)",
+  "server": "All MetaKGP server related queries go here. We run a dockerized setup on a Digital Ocean droplet. More details here: https://wiki.metakgp.org/w/Metakgp:SysAdmin",
+  "governance": "This is the channel where discussions related to the functioning and maintenance of the Metakgp organization happens.",
+  "demo-day": "Discussions related to demo-day belong here. Demo Day is an initiative by Metakgp to promote development of potentially high-impact projects. Anyone can register and demo their project to the arbiters. Participants also stand a chance to win a cash prize of Rs. 1000."
 }
