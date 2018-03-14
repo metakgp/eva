@@ -20,8 +20,9 @@
 #  icyflame
 
 
+# Returns a random number between 0 and up_lim-1 (both inclusive)
 randNum = (up_lim) ->
-  return (Math.floor(Math.random() * (2 * up_lim)) % up_lim)
+  return (Math.floor(Math.random() * 1e4) % up_lim)
 
 welcome_message_1 = [
   "Hi ",
