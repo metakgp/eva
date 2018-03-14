@@ -40,13 +40,12 @@ welcome_message_2 = [
 ].join('\n')
 
 welcome_message_3 = [
-  "Forgot to mention, everyone is waiting for you to say 'hi' in #general",
+  "Forgot to mention, everyone is waiting for you to say 'hi' in #general.",
   "By the way, why don't you tell everyone a bit about yourself in #general?"
 ]
 
-welcome_message_4 = " Also, it will be really helpful if you update your Slack profile with real name and contact number."
+welcome_message_4 = " It will be really helpful if you update your Slack profile with real name, just so people can recognize you using all your monikers!"
 channels_info = [
-  "The following is a list of channels and the type of discussions that each channel is designed to contain:",
   "- #mfqp-source -> Discussions about the mfqp-source project",
   "- #meta-x -> Disussions related to ongoing meta-x projects (naarad, mfqp, mftp, mcmp) and future moonshots",
   "- #book-club -> Read a book that you want to talk about? Want to read a book that someone else talked about? Go here!",
@@ -54,20 +53,26 @@ channels_info = [
   "- #general -> General discussions that don't fit anywhere else",
   "- #cute-animal-pics -> `@eva cat bomb 4` or `@eva pug bomb 4` in this channel should tell you more!",
   "- #random -> Unrelated rants and discussions, anything really\n\n",
+  "",
   "GitHub: https://github.com/metakgp",
   "Wiki: https://wiki.metakgp.org"
 ].join('\n')
-googleGroupInvite = "We also have a google group where we post all the latest announcements. You can join it by going to https://goo.gl/Uk4Lfl."
+googleGroupInvite = "We have a google group where we post all the latest announcements. It is a low volume group, so there won't be any unwanted email in your inbox. We hate those too! You can join it by going to https://goo.gl/Uk4Lfl."
+
 channel_descriptions = JSON.parse require("fs").readFileSync("channel_long_descriptions.json")
 sorry_no_information = "Ooops! It seems we don't know anything more about this channel! Sorry, you are a pioneer!"
 
 complete_welcome_msg = (username) ->
   return [
-    welcome_message_1[randNum(welcome_message_1.length-1)] + '@' +
-      username + welcome_message_2[randNum(welcome_message_2.length-1)],
-    googleGroupInvite,
+    "*Welcome to Metakgp!*",
+    welcome_message_1[randNum(welcome_message_1.length)] + '@' +
+      username + welcome_message_2[randNum(welcome_message_2.length)],
+    "*A little bit more about the channels on this Slack:*",
     channels_info,
-    welcome_message_3[randNum(welcome_message_3.length-1)] + welcome_message_4
+    "",
+    welcome_message_3[randNum(welcome_message_3.length-1)] + welcome_message_4,
+    "*Other communication channels:*",
+    googleGroupInvite
   ].join('\n')
 
 more_about_channel = (channel_name) ->
