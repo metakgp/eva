@@ -18,6 +18,7 @@
 # Author:
 #  nevinvalsaraj
 #  icyflame
+#  thealphadollar
 
 
 # Returns a random number between 0 and up_lim-1 (both inclusive)
