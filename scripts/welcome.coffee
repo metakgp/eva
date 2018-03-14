@@ -46,13 +46,15 @@ welcome_message_3 = [
 
 welcome_message_4 = " It will be really helpful if you update your Slack profile with real name, just so people can recognize you using all your monikers!"
 channels_info = [
-  "- #mfqp-source -> Discussions about the mfqp-source project",
-  "- #meta-x -> Disussions related to ongoing meta-x projects (naarad, mfqp, mftp, mcmp) and future moonshots",
-  "- #book-club -> Read a book that you want to talk about? Want to read a book that someone else talked about? Go here!",
-  "- #server -> Server related discussion. We run a Digital Ocean droplet",
-  "- #general -> General discussions that don't fit anywhere else",
-  "- #cute-animal-pics -> `@eva cat bomb 4` or `@eva pug bomb 4` in this channel should tell you more!",
-  "- #random -> Unrelated rants and discussions, anything really\n\n",
+  "* #mfqp-source -> Discussions about the mfqp-source project",
+  "* #meta-x -> Disussions related to ongoing meta-x projects (naarad, mfqp, mftp, mcmp) and future moonshots",
+  "* #book-club -> Read a book that you want to talk about? Want to read a book that someone else talked about? Go here!",
+  "* #server -> Server related discussion. We run a Digital Ocean droplet",
+  "* #general -> General discussions that don't fit anywhere else",
+  "* #cute-animal-pics -> `@eva cat bomb 4` or `@eva pug bomb 4` in this channel should tell you more!",
+  "- #random -> Unrelated rants and discussions, anything really",
+  "",
+  "*Links on other websites:*",
   "",
   "GitHub: https://github.com/metakgp",
   "Wiki: https://wiki.metakgp.org"
@@ -65,12 +67,13 @@ sorry_no_information = "Ooops! It seems we don't know anything more about this c
 complete_welcome_msg = (username) ->
   return [
     "*Welcome to Metakgp!*",
-    welcome_message_1[randNum(welcome_message_1.length)] + '@' +
-      username + welcome_message_2[randNum(welcome_message_2.length)],
+    welcome_message_1[randNum(welcome_message_1.length)] + '@' + username + "!",
+    "",
     "*A little bit more about the channels on this Slack:*",
     channels_info,
     "",
     welcome_message_3[randNum(welcome_message_3.length-1)] + welcome_message_4,
+    "",
     "*Other communication channels:*",
     googleGroupInvite
   ].join('\n')
