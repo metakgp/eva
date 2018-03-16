@@ -40,8 +40,9 @@ welcome_message_2 = [
 ].join('\n')
 
 welcome_message_3 = [
-  "Forgot to mention, everyone is waiting for you to say 'hi' in #general.",
-  "By the way, why don't you tell everyone a bit about yourself in #general?"
+  "Did I mention that everyone is waiting for you to say 'hi' in #general.",
+  "It would be exciting if you tell everyone a little about yourself in #general!",
+  "Are you thinking, when is the best time to make everyone aware of your arrival? It's RIGHT NOW!"
 ]
 
 welcome_message_4 = " It will be really helpful if you update your Slack profile with real name, just so people can recognize you using all your monikers!"
@@ -69,10 +70,10 @@ complete_welcome_msg = (username) ->
     "*Welcome to Metakgp!*",
     welcome_message_1[randNum(welcome_message_1.length)] + '@' + username + "!",
     "",
+    welcome_message_3[randNum(welcome_message_3.length-1)] + welcome_message_4,
+    "",
     "*A little bit more about the channels on this Slack:*",
     channels_info,
-    "",
-    welcome_message_3[randNum(welcome_message_3.length-1)] + welcome_message_4,
     "",
     "*Other communication channels:*",
     googleGroupInvite
