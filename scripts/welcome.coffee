@@ -41,8 +41,7 @@ welcome_message_2 = [
 
 welcome_message_3 = [
   "Did I mention that everyone is waiting for you to say 'hi' in #general.",
-  "It would be exciting if you tell everyone a little about yourself in #general!",
-  "Are you thinking, when is the best time to make everyone aware of your arrival? It's RIGHT NOW!"
+  "It would be exciting if you tell everyone something about yourself in #general!"
 ]
 
 welcome_message_4 = " It will be really helpful if you update your Slack profile with real name, just so people can recognize you using all your monikers!"
