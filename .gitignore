@@ -1,3 +1,9 @@
 node_modules
 .DS_Store*
 .hubot_history
+.idea/eva.iml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/workspace.xml
+.vscode/launch.json
