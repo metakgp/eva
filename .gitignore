@@ -7,3 +7,4 @@ node_modules
 .idea/vcs.xml
 .idea/workspace.xml
 .vscode/launch.json
+.vscode
