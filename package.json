@@ -22,9 +22,9 @@
     "hubot-slack": "^3.4.2",
     "githubot": "^1.0.1",
     "hubot-cronjob": "^0.2.2",
-    "textversionjs": "^1.0.2"
+    "remove-markdown": "^0.2.2"
   },
   "engines": {
-    "node": "0.10.x"
+    "node": "8.11.x"
   }
 }

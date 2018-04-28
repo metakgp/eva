@@ -5,7 +5,7 @@
 # # Dependencies:
 # #   hubot-cronjob
 # #   githubot
-# #   textversionjs
+# #   remove-markdown
 # #
 # # Configuration:
 # #   None
@@ -25,7 +25,7 @@ to_text = (desc) ->
   """
   removes html/markdown tags from the input text
   """
-  convert_to_text = require("textversionjs")
+  convert_to_text = require("remove-markdown")
   return convert_to_text(desc)
 
 
