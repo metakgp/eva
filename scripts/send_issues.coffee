@@ -88,7 +88,7 @@ git_msg = (msg, robot, in_personal, parent) ->
         if in_personal
           msg.send msg_to_send
         else
-          robot.messageRoom 'meta-x', msg_to_send
+          robot.messageRoom 'random', msg_to_send
 
 
 send_issue_plugin = (robot) ->
@@ -99,7 +99,7 @@ send_issue_plugin = (robot) ->
     git_msg(msg, robot, true, true)
   
   """
-  Sends a github issue every day at 10 AM IST
+  Sends a github issue every day to random at 10 AM IST
   """
   HubotCron = require('hubot-cronjob')
   pattern = "0 10 * * *"
