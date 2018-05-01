@@ -99,10 +99,10 @@ send_issue_plugin = (robot) ->
     git_msg(msg, robot, true, true)
   
   """
-  Sends a github issue every day to random at 10 AM IST
+  Sends a github issue every saturday to random at 10 AM IST
   """
   HubotCron = require('hubot-cronjob')
-  pattern = "0 10 * * *"
+  pattern = "0 10 * * SAT"
   timezone = "Asia/Kolkata"
   fn = () ->
     git_msg(null, robot, false, true)
