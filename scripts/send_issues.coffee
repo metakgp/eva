@@ -44,20 +44,24 @@ select_random = (value) ->
 git_msg = (msg, robot, in_personal, parent) ->
   """
   function to fetch and show random issue from metaKGP github
-  Argument:: in_personal:
-    true: send the message where user asked
-    false: send the message in metax channel 
+  Argument:: 
+    in_personal:
+      true: send the message where user asked
+      false: send the message in metax channel
+    parent:
+      true: first iteration
+      false: subsequent iterations
   """
 
   if parent
     recur_depth = 1
 
   github = require('githubot')(robot)
-  github.get "https://api.github.com/orgs/metakgp/repos", (repos_list) ->
+  github.get "orgs/metakgp/repos", {per_page: 100}, (repos_list) ->
 
     no_of_repos = Object.keys(repos_list).length
     repo = repos_list[select_random(no_of_repos)].name
-    repo_url = "https://api.github.com/repos/metakgp/".concat(repo, "/issues")
+    repo_url = "repos/metakgp/".concat(repo, "/issues")
 
     github.get repo_url, (issues_list) ->
 
