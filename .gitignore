@@ -8,3 +8,5 @@ node_modules
 .idea/workspace.xml
 .vscode/launch.json
 .vscode
+
+package-lock.json

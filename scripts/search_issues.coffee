@@ -34,14 +34,18 @@ git_search = (msg, robot, keywords) ->
 
         if keyword in issue.title.split " "
           matching_issue_index.push index
-
         else if keyword in issue.body.split " "
           matching_issue_index.push index
       
     if matching_issue_index.length > 0 
-      msg_to_send = [
-        "The following issues match your query [" + keywords.join(' ,') + "]:\n"
-        ]
+      if matching_issue_index.length == 1
+        msg_to_send = [
+          "The following issue matches your query [" + keywords.join(' ,') + "]:\n"
+          ]
+      else
+        msg_to_send = [
+          "The following issues match your query [" + keywords.join(' ,') + "]:\n"
+          ]
 
       for index in matching_issue_index
         specific_issue_msg = "*" + issue_list[index].title + "* -> " + issue_list[index].html_url
