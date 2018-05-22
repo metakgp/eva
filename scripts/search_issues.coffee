@@ -36,7 +36,7 @@ git_search = (msg, robot, keyword) ->
   github.get "search/issues", {q: query, per_page: 6}, (issue_list) ->
 
     if issue_list.total_count > 0
-      msg_to_send.push "Found " + issue_list.total_count.toString() + " issues matching your query. Top matches:"
+      msg_to_send.push "Here are the top matches for your query:"
 
       for data, index in issue_list.items
         specific_issue_msg = "*" + data.title + "* -> " + data.html_url
