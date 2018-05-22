@@ -31,7 +31,7 @@ git_search = (msg, robot, keyword) ->
 
   msg_to_send = [ ]
 
-  query = keyword + "org:metakgp"
+  query = keyword + " org:metakgp"
 
   github.get "search/issues", {q: query, per_page: 6}, (issue_list) ->
 
