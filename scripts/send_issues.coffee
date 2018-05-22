@@ -22,9 +22,7 @@ recur_depth = 1
 
 
 to_text = (desc) ->
-  """
-  removes html/markdown tags from the input text
-  """
+  # removes html/markdown tags from the input text
   convert_to_text = require("remove-markdown")
   return convert_to_text(desc)
 
@@ -35,29 +33,31 @@ iterate = (labels) ->
 
 
 select_random = (value) ->
-  """
-  returns a random number in range 0 (inclusive) to value (exclusive)
-  """
+  # returns a random number in range 0 (inclusive) to value (exclusive)
   return (Math.floor(Math.random() * 1e4) % value)
 
 
 git_msg = (msg, robot, in_personal, parent) ->
-  """
-  function to fetch and show random issue from metaKGP github
-  Argument:: in_personal:
-    true: send the message where user asked
-    false: send the message in metax channel 
-  """
+  ###
+  # function to fetch and show random issue from metaKGP github
+  # Argument::
+  #   in_personal:
+  #     true: send the message where user asked
+  #     false: send the message in metax channel
+  #   parent:
+  #     true: first iteration
+  #     false: subsequent iterations
+  ###
 
   if parent
     recur_depth = 1
 
   github = require('githubot')(robot)
-  github.get "https://api.github.com/orgs/metakgp/repos", (repos_list) ->
+  github.get "orgs/metakgp/repos", {per_page: 100}, (repos_list) ->
 
     no_of_repos = Object.keys(repos_list).length
     repo = repos_list[select_random(no_of_repos)].name
-    repo_url = "https://api.github.com/repos/metakgp/".concat(repo, "/issues")
+    repo_url = "repos/metakgp/".concat(repo, "/issues")
 
     github.get repo_url, (issues_list) ->
 
@@ -84,7 +84,7 @@ git_msg = (msg, robot, in_personal, parent) ->
           "*Description:* " + to_text(issue_to_send.body),
           "*Know more at *" + issue_to_send.html_url
         ].join('\n')
-    
+
         if in_personal
           msg.send msg_to_send
         else
@@ -92,15 +92,11 @@ git_msg = (msg, robot, in_personal, parent) ->
 
 
 send_issue_plugin = (robot) ->
-  """
-  Sends a github issue when user pings Eva with 'contribute' argument
-  """
+  # Sends a github issue when user pings Eva with 'contribute' argument
   robot.respond /((want to )?contribute)/i, (msg) ->
     git_msg(msg, robot, true, true)
-  
-  """
-  Sends a github issue every saturday to random at 10 AM IST
-  """
+
+  # Sends a github issue every saturday to random at 10 AM IST
   HubotCron = require('hubot-cronjob')
   pattern = "0 10 * * SAT"
   timezone = "Asia/Kolkata"
