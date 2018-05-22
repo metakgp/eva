@@ -37,13 +37,15 @@ git_search = (msg, robot, keyword) ->
 
     if issue_list.total_count > 0
       msg_to_send.push "Here are the top matches for your query:"
+      msg_to_send.push ""
 
       for data, index in issue_list.items
-        specific_issue_msg = "*" + data.title + "* -> " + data.html_url
+        specific_issue_msg = "- *" + data.title + "* -> " + data.html_url
         msg_to_send.push specific_issue_msg
         if index >= (ISSUES_TO_SHOW-1)  # displaying at max 5 issues
           break
 
+      msg_to_send.push ""
       msg_to_send.push "Find all the issues here: " + webpage_url(query)
 
       msg.send msg_to_send.join('\n')
