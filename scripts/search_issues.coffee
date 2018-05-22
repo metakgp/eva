@@ -13,6 +13,14 @@
 # # Author:
 # #  thealphadollar
 
+ISSUES_TO_SHOW = 5
+
+webpage_url = (query) ->
+  """
+  Return the url of the web page which will show the issues matching a given query on github
+  """
+
+  return "https://github.com/issues?q=" + encodeURIComponent(query)
 
 git_search = (msg, robot, keyword) ->
   """
@@ -25,33 +33,27 @@ git_search = (msg, robot, keyword) ->
 
   github = require('githubot')(robot)
 
+  msg_to_send = [ ]
+
   query = keyword + "org:metakgp"
+
   github.get "search/issues", {q: query, per_page: 6}, (issue_list) ->
 
     if issue_list.total_count > 0
-      if issue_list.total_count == 1
-        msg_to_send = [
-          "Matching issue for your query \"" + keyword + "\" is:\n"
-          ]
-      else if issue_list.total_count <= 5
-        msg_to_send = [
-          "Matching issues for your query \"" + keyword + "\" are:\n"
-          ]
-      else
-        msg_to_send = [
-          "Top five matching issues for your query \"" + keyword + "\" are:\n"
-          ]
+      msg_to_send.push "Found " + issue_list.total_count.toString() + " issues matching your query. Top matches:"
 
       for data, index in issue_list.items
         specific_issue_msg = "*" + data.title + "* -> " + data.html_url
         msg_to_send.push specific_issue_msg
-        if index == 4  # displaying at max 5 issues
+        if index >= (ISSUES_TO_SHOW-1)  # displaying at max 5 issues
           break
+
+      msg_to_send.push "Find all the issues here: " + webpage_url(query)
 
       msg.send msg_to_send.join('\n')
 
     else
-      msg.send "Oops! No matching issues for \"" + keyword + "\"."
+      msg.send "Oops! No matching issues for the keyword: " + keyword
 
 
 search_issue_plugin = (robot) ->
@@ -74,4 +76,3 @@ search_issue_plugin = (robot) ->
 
 
 module.exports = search_issue_plugin
-

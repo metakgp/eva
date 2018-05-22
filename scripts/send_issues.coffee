@@ -44,7 +44,7 @@ select_random = (value) ->
 git_msg = (msg, robot, in_personal, parent) ->
   """
   function to fetch and show random issue from metaKGP github
-  Argument:: 
+  Argument::
     in_personal:
       true: send the message where user asked
       false: send the message in metax channel
@@ -88,7 +88,7 @@ git_msg = (msg, robot, in_personal, parent) ->
           "*Description:* " + to_text(issue_to_send.body),
           "*Know more at *" + issue_to_send.html_url
         ].join('\n')
-    
+
         if in_personal
           msg.send msg_to_send
         else
@@ -101,7 +101,7 @@ send_issue_plugin = (robot) ->
   """
   robot.respond /((want to )?contribute)/i, (msg) ->
     git_msg(msg, robot, true, true)
-  
+
   """
   Sends a github issue every saturday to random at 10 AM IST
   """
