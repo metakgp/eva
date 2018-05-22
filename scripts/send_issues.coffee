@@ -22,9 +22,7 @@ recur_depth = 1
 
 
 to_text = (desc) ->
-  """
-  removes html/markdown tags from the input text
-  """
+  # removes html/markdown tags from the input text
   convert_to_text = require("remove-markdown")
   return convert_to_text(desc)
 
@@ -35,23 +33,21 @@ iterate = (labels) ->
 
 
 select_random = (value) ->
-  """
-  returns a random number in range 0 (inclusive) to value (exclusive)
-  """
+  # returns a random number in range 0 (inclusive) to value (exclusive)
   return (Math.floor(Math.random() * 1e4) % value)
 
 
 git_msg = (msg, robot, in_personal, parent) ->
-  """
-  function to fetch and show random issue from metaKGP github
-  Argument::
-    in_personal:
-      true: send the message where user asked
-      false: send the message in metax channel
-    parent:
-      true: first iteration
-      false: subsequent iterations
-  """
+  ###
+  # function to fetch and show random issue from metaKGP github
+  # Argument::
+  #   in_personal:
+  #     true: send the message where user asked
+  #     false: send the message in metax channel
+  #   parent:
+  #     true: first iteration
+  #     false: subsequent iterations
+  ###
 
   if parent
     recur_depth = 1
@@ -96,15 +92,11 @@ git_msg = (msg, robot, in_personal, parent) ->
 
 
 send_issue_plugin = (robot) ->
-  """
-  Sends a github issue when user pings Eva with 'contribute' argument
-  """
+  # Sends a github issue when user pings Eva with 'contribute' argument
   robot.respond /((want to )?contribute)/i, (msg) ->
     git_msg(msg, robot, true, true)
 
-  """
-  Sends a github issue every saturday to random at 10 AM IST
-  """
+  # Sends a github issue every saturday to random at 10 AM IST
   HubotCron = require('hubot-cronjob')
   pattern = "0 10 * * SAT"
   timezone = "Asia/Kolkata"

@@ -16,21 +16,17 @@
 ISSUES_TO_SHOW = 5
 
 webpage_url = (query) ->
-  """
-  Return the url of the web page which will show the issues matching a given query on github
-  """
+  # Return the url of the web page which will show the issues matching a given query on github
 
   return "https://github.com/issues?q=" + encodeURIComponent(query)
 
 git_search = (msg, robot, keyword) ->
-  """
-  Fetches list of issues matching keyword/phrase
-
-  Argument::
-    keyword:
-      keyword to match in the repositories name and description.
-  """
-
+  ###
+  # Fetches list of issues matching keyword/phrase
+  # Argument::
+  #   keyword:
+  #     keyword to match in the repositories name and description.
+  ###
   github = require('githubot')(robot)
 
   msg_to_send = [ ]
@@ -57,19 +53,20 @@ git_search = (msg, robot, keyword) ->
 
 
 search_issue_plugin = (robot) ->
-    """
-    Searches all github issues of the metakgp organisation for a keyword.
+    ###
+    # Searches all github issues of the metakgp organisation for a keyword.
+    #
+    # Keyword can be a sentence preceded by search/query keyword.
+    # -- @eva search frontend tests
+    # Keyword here will be "frontend tests"
+    #
+    # Returns matching issues in the following format:
+    # -- Matching issues for your query "" are:
+    # -- *[issue_Title_1]* -> [issue_Link]
+    # -- *[issue_Title_2]* -> [issue_Link]
+    # -- ...
+    ###
 
-    Keyword can be a sentence preceded by search/query keyword.
-    -- @eva search frontend tests
-    Keyword here will be "frontend tests"
-
-    Returns matching issues in the following format:
-    -- Matching issues for your query "" are:
-    -- *[issue_Title_1]* -> [issue_Link]
-    -- *[issue_Title_2]* -> [issue_Link]
-    -- ...
-    """
     robot.respond /(search|query) (.*)/i, (msg) ->
         keyword = msg.match[2]
         git_search(msg, robot, keyword)
