@@ -94,6 +94,9 @@ plugin = (robot) ->
   robot.respond /(Good|Great|good|great) job(!)?/i, (msg) ->
       msg.send "Thank you @#{msg.message.user.name} :smiley:"
 
+  robot.respond /(You are|welcome) back(!)?/i, (msg) ->
+      msg.send "I have always been here, @#{msg.message.user.name}! :sunglasses:"
+
   robot.respond /(send the )?joining message( to me)?/i, (msg) ->
     robot.send {room: msg.message.user.name}, complete_welcome_msg(msg.message.user.name)
 
